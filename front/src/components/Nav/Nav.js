@@ -7,6 +7,7 @@ import Home from "../Home/Home";
 import { upperFirst } from 'lodash/string';
 import Products from "../../containers/Products/Products";
 import Contact from "../Contact/Contact";
+import Clients from "../Clients/Clients";
 
 const navItems = [
     {
@@ -26,6 +27,12 @@ const navItems = [
         to: '/contact',
         exact: true,
         icon: 'contact_support',
+    },
+    {
+        label: 'Clients',
+        to: '/clients',
+        exact: true,
+        icon: 'supervisor_account',
     }
 ];
 
@@ -85,6 +92,7 @@ class Nav extends PureComponent{
                     <Route exact path={navItems[1].to} component={Products}/>
                     <Route exact path={navItems[1].to + '/:category'} component={Products}/>
                     <Route exact path={navItems[2].to} component={Contact}/>
+                    <Route exact path={navItems[3].to} component={Clients}/>
                 </Switch>
             </NavigationDrawer>
         );
