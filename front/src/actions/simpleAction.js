@@ -30,3 +30,30 @@ const getProducts = () => ({
 const getProductsFailure = error => ({
     type: t.FETCH_PRODUCTS_FAILURE
 });
+
+export const postContact = (form = {}) => dispatch => {
+    dispatch(postContactAction());
+    api.post(`contact`, form)
+        .then(res => {
+            console.log(res.data);
+            dispatch(postContactSuccess(res.data));
+        })
+        .catch(err => {
+            dispatch(postContactFailure(err.message));
+        });
+};
+
+const postContactSuccess = todo => ({
+    type: t.POST_CONTACT_SUCCESS,
+    payload: {
+        ...todo
+    }
+});
+
+const postContactAction = () => ({
+    type: t.POST_CONTACT
+});
+
+const postContactFailure = (error) => ({
+    type: t.POST_CONTACT_FAILURE
+});

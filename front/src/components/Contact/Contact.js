@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './Contact.css';
 import {TextField, Button} from "react-md";
 import { connect } from 'react-redux';
-import {postContact} from "../../actions/contactActions";
-
+import {postContact} from "../../actions/simpleAction";
 class Contact extends Component {
     constructor(props){
         super();
@@ -14,6 +13,7 @@ class Contact extends Component {
             subject : '',
             invalid : true,
         };
+
     }
 
 
@@ -60,6 +60,9 @@ class Contact extends Component {
     };
 
     render() {
+        if(this.props.contact.message){
+            alert (this.props.contact.message);
+        }
         const { firstName,
              lastName,
              email,
